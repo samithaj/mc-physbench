@@ -46,3 +46,7 @@ results/videos/smoke_*
 results/videos/*_longhorizon_grid.mp4
 results/videos/*_cosmos14b_grid.mp4
 results/videos/*_cosmos720p_grid.mp4
+
+# H-JEPA Studio local state
+hjepa_platform/data/
+hjepa_platform/.env
