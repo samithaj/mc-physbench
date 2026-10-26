@@ -142,3 +142,11 @@ AGENT.md           the design log: every milestone, decision and finding, in the
 ## License
 
 Apache License 2.0. See `LICENSE`. Model weights and hosted APIs evaluated by the benchmark carry their own licences; the registry records each one, and restricted models are off by default.
+
+---
+
+## H-JEPA Studio
+
+[`hjepa_platform/`](hjepa_platform/README.md) holds a separate web platform for hierarchical JEPA world models
+([H-JEPA](https://github.com/kevinghst/H-JEPA)). It lets users share world-model data, train and evaluate
+models on rented RunPod GPUs, and simulate them in the browser. It does not depend on the benchmark package.

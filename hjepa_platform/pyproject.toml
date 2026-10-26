@@ -1,0 +1,36 @@
+[project]
+name = "hjepa-studio"
+version = "0.1.0"
+description = "Share world-model data, train hierarchical JEPA world models on rented RunPod GPUs, and simulate them in the browser"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.29",
+  "sqlalchemy>=2.0",
+  "pydantic>=2.6",
+  "pyjwt>=2.8",
+  "cryptography>=42",
+  "httpx>=0.27",
+  "h5py>=3.10",
+  "hdf5plugin>=4.4",
+  "numpy>=1.24",
+  "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]>=3.1"]
+test = ["pytest>=8", "pyyaml>=6"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["hjepa_studio", "hjepa_studio.routers"]
+
+[tool.setuptools.package-data]
+hjepa_studio = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

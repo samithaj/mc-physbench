@@ -1,0 +1,29 @@
+# Production-ish deployment: the platform behind HTTPS (put Caddy/nginx/Cloudflare in front)
+# so RunPod workers can reach HJS_PUBLIC_URL. Copy .env.example to .env first.
+services:
+  studio:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HJS_DATA_DIR: /data
+      HJS_DATABASE_URL: postgresql+psycopg://studio:${POSTGRES_PASSWORD}@db:5432/studio
+    volumes:
+      - studio-data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: studio
+      POSTGRES_DB: studio
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  studio-data:
+  db-data:
